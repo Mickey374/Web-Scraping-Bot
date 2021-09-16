@@ -46,3 +46,28 @@ class Booking(webdriver.Chrome):
 
         check_out_element = self.find_element_by_css_selector(f'td[data-date="{check_out_date}"]')
         check_out_element.click()
+
+    def choose_adults(self, count=1):
+        select_element = self.find_element_by_id('xp__guests__toggle')
+        select_element.click()
+
+
+        #While loop to decrease the adults value until is 1 before we can start increasing.
+        while True:
+            decrease_adult_element = self.find_element_by_css_selector('button[aria-label="Decrease number of Adults"]')
+            decrease_adult_element.click()
+
+            #Check and see the input value field accepting the value of Adults number
+            adult_value_element = self.find_element_by_id('group_adults')
+            adult_value = adult_value_element.get_attribute('value')
+
+            #If condition to check if value is 1
+            if int(adult_value) == 1:
+                break
+
+        #check and increment the value of the Adults count
+        increase_adult_element = self.find_element_by_css_selector('button[aria-label="Increase number of Adults"]')
+
+        for i in range(count -1):
+            increase_adult_element.click()
+
