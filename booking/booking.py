@@ -71,3 +71,7 @@ class Booking(webdriver.Chrome):
         for i in range(count -1):
             increase_adult_element.click()
 
+
+    def click_search(self):
+        search_element = self.find_element_by_css_selector('button[type="submit"]')
+        search_element.click()
