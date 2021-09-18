@@ -81,4 +81,4 @@ class Booking(webdriver.Chrome):
     #Filterations after clicking search button
     def apply_filterations(self):
        filtration = BookingFiltrations(driver=self)
-       filtration.filtrations(star_value=4)
+       filtration.filtrations(3, 4, 2)
