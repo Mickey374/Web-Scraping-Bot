@@ -1,6 +1,7 @@
 import os
 import booking.constants as const
 from selenium import webdriver
+from booking.booking_filtrations import BookingFiltrations
 
 class Booking(webdriver.Chrome):
     def __init__(self, driver_path= r"C:/Users/hp/Desktop/PERSONAL/Thelma_Work", teardown = False):
@@ -75,3 +76,9 @@ class Booking(webdriver.Chrome):
     def click_search(self):
         search_element = self.find_element_by_css_selector('button[type="submit"]')
         search_element.click()
+    
+
+    #Filterations after clicking search button
+    def apply_filterations(self):
+       filtration = BookingFiltrations(driver=self)
+       filtration.filtrations(star_value=4)
