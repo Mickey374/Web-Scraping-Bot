@@ -81,4 +81,12 @@ class Booking(webdriver.Chrome):
     #Filterations after clicking search button
     def apply_filterations(self):
        filtration = BookingFiltrations(driver=self)
+       
+       #Clicking on the star rating for 3 Stars, 4 Stars & 2 Stars
        filtration.filtrations(3, 4, 2)
+       
+       self.implicitly_wait(6)
+       
+       #Call the lowest price first sort method
+       filtration.sort_price_lowest_first()
+
