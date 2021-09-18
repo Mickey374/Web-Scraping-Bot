@@ -12,7 +12,12 @@ class Booking(webdriver.Chrome):
         
         #OS path to handle Chrome Webdriver path.
         os.environ["PATH"] += self.driver_path
-        super(Booking, self).__init__()
+
+        #Add a chrome dev options tool to ignore errors printed on CLI
+        options = webdriver.ChromeOptions()
+        options.add_experimental_option('excludeSwitches', ['enable-logging'])
+
+        super(Booking, self).__init__(options = options)
 
         #Adding implicitly wait method
         self.implicitly_wait(15)
