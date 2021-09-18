@@ -12,9 +12,26 @@ class BookingReport():
         return self.boxes_section_element.find_elements_by_class_name('sr_property_block')
     
     def pull_titles(self):
+        #List to handle all data scraped
+        collection = []
+
         #for loop to print out all the Titles/Names of hotels
         for deal_box in self.deal_boxes:
+
+            #Get hotel name
             hotel = deal_box.find_element_by_class_name('sr-hotel__name').get_attribute('innerHTML').strip()
-            print(hotel)
+            
+            #Get Hotel price
+            price = deal_box.find_element_by_class_name('prco-valign-middle-helper').get_attribute('innerHTML').strip()
+            
+            #Get hotel score
+            score = deal_box.get_attribute('data-score').strip()
+
+            collection.append(
+                [hotel, price, score]
+            )
+        
+        return collection
+
 
         

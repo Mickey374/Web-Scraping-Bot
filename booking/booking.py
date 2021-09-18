@@ -100,6 +100,6 @@ class Booking(webdriver.Chrome):
         results_box = self.find_element_by_id('hotellist_inner')
         
         reports = BookingReport(results_box)
-        reports.pull_titles()
+        print(reports.pull_titles())
         #return results_box
 
