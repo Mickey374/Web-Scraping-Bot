@@ -2,6 +2,7 @@ import os
 import booking.constants as const
 from selenium import webdriver
 from booking.booking_filtrations import BookingFiltrations
+from booking.booking_report import BookingReport
 
 class Booking(webdriver.Chrome):
     def __init__(self, driver_path= r"C:/Users/hp/Desktop/PERSONAL/Thelma_Work", teardown = False):
@@ -94,4 +95,11 @@ class Booking(webdriver.Chrome):
        
        #Call the lowest price first sort method
        filtration.sort_price_lowest_first()
+    
+    def return_results(self):
+        results_box = self.find_element_by_id('hotellist_inner')
+        
+        reports = BookingReport(results_box)
+        reports.pull_titles()
+        #return results_box
 

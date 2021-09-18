@@ -9,6 +9,8 @@ try:
         bot.choose_adults(10)
         bot.click_search()
         bot.apply_filterations()
+        #print(len(bot.return_results()))   // Checking the total elements in the parent box for our filtered search results
+        bot.return_results()
 
 except Exception as e:
     if 'in PATH' in str(e):

@@ -23,3 +23,5 @@ class BookingFiltrations():
     def sort_price_lowest_first(self):
         element = self.driver.find_element_by_css_selector('li[data-id="review_score_and_price"]')
         element.click()
+
+    
