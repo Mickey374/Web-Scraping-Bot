@@ -3,6 +3,7 @@ import booking.constants as const
 from selenium import webdriver
 from booking.booking_filtrations import BookingFiltrations
 from booking.booking_report import BookingReport
+from prettytable import PrettyTable
 
 class Booking(webdriver.Chrome):
     def __init__(self, driver_path= r"C:/Users/hp/Desktop/PERSONAL/Thelma_Work", teardown = False):
@@ -100,6 +101,12 @@ class Booking(webdriver.Chrome):
         results_box = self.find_element_by_id('hotellist_inner')
         
         reports = BookingReport(results_box)
-        print(reports.pull_titles())
+
+        #Adding a Pretty Table library to improve visualizations
+        table = PrettyTable(
+            field_names=["Hotel Name", "Hotel Price", "Hotel Ratings"]
+        )
+        table.add_rows(reports.pull_titles())
+        print(table)
         #return results_box
 
